@@ -1,0 +1,18 @@
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.fade-up { transform: translateY(30px); }
+.fade-in { opacity: 0; transform: none; }
+.slide-in { transform: translateX(-24px); }
+.scale { transform: scale(0.98); }
+img { transition: transform 0.4s ease, filter 0.4s ease; }
+img:hover { filter: saturate(1.08); }
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; }
+}
