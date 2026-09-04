@@ -29,6 +29,23 @@ Use the folders under `images/`.
 
 - `css/style.css`
 - `css/responsive.css`
+- `css/animations.css`
+
+## Code structure
+
+- `data/products.js` stores the product catalog data only.
+- `js/config.js` stores company contact and site configuration.
+- `js/main.js` contains behavior shared by every page.
+- `js/language.js` contains translations and language switching.
+- `js/product-card.js` is the shared product-card renderer used by the catalog and related-products sections.
+- `js/products.js` handles catalog filtering and rendering.
+- `js/product-details.js` handles the product detail page and related products.
+- `js/contact.js` handles contact form behavior.
+- `css/style.css` contains shared tokens, layout, components, and page styles.
+- `css/responsive.css` contains breakpoint-specific layout changes.
+- `css/animations.css` contains reveal and motion styles.
+
+When changing product-card markup, edit `js/product-card.js` instead of duplicating the HTML in a page script.
 
 ## Configure contact handling
 

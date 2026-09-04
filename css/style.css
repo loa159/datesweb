@@ -312,7 +312,7 @@ p { margin: 0 0 1rem; color: var(--charcoal); }
 .timeline::before {
   content: '';
   position: absolute;
-  left: 38px;
+  inset-inline-start: 38px;
   top: 0;
   bottom: 0;
   width: 2px;
@@ -327,7 +327,7 @@ p { margin: 0 0 1rem; color: var(--charcoal); }
   padding: 1.6rem;
   border-radius: var(--radius);
   box-shadow: var(--shadow);
-  border-left: 4px solid var(--gold);
+  border-inline-start: 4px solid var(--gold);
 }
 .timeline-item .step {
   display: inline-flex;
@@ -447,8 +447,19 @@ p { margin: 0 0 1rem; color: var(--charcoal); }
   color: var(--green-dark);
 }
 
-.product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; }
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1.5rem;
+  width: 100%;
+  min-width: 0;
+}
+.product-grid > * { min-width: 0; }
 .product-card {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-width: 0;
   overflow: hidden;
   background: var(--white);
   border-radius: 20px;
@@ -461,12 +472,28 @@ p { margin: 0 0 1rem; color: var(--charcoal); }
   border-color: rgba(233, 174, 24, 0.6);
 }
 .product-card img {
+  display: block;
   width: 100%;
+  max-width: 100%;
   height: 280px;
   object-fit: contain;
   background: #f4eee2;
 }
-.product-card-content { padding: 1.2rem; }
+.product-card-content {
+  width: 100%;
+  min-width: 0;
+  padding: 1.2rem;
+}
+.product-card h3,
+.product-title {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  word-break: normal;
+  overflow-wrap: normal;
+  white-space: normal;
+  line-height: 1.2;
+}
 .product-meta {
   display: flex;
   justify-content: space-between;
@@ -481,6 +508,7 @@ p { margin: 0 0 1rem; color: var(--charcoal); }
   display: flex;
   gap: 0.6rem;
   margin-top: 1rem;
+  min-width: 0;
 }
 .card-actions .btn { flex: 1; padding: 0.75rem 0.9rem; font-size: 0.72rem; }
 
@@ -524,6 +552,8 @@ p { margin: 0 0 1rem; color: var(--charcoal); }
   box-shadow: var(--shadow);
 }
 .contact-info-list { display: grid; gap: 1rem; }
+.contact-info-list > div,
+.site-footer li { overflow-wrap: anywhere; }
 .map-box {
   min-height: 260px;
   display: grid;

@@ -1,27 +1,5 @@
 const productData = Array.isArray(window.products) ? window.products : [];
 
-function getProductCard(product) {
-  return `
-    <article class="product-card reveal fade-up">
-      <img src="${product.image}" alt="${product.name}" loading="eager" width="800" height="700" />
-      <div class="product-card-content">
-        <div class="product-meta">
-          <span>${product.category}</span>
-          <span>${product.type}</span>
-        </div>
-        <h3>${product.name}</h3>
-        <p>${product.description}</p>
-        <p><strong>Origin:</strong> ${product.origin}</p>
-        <p><strong>Packaging:</strong> ${product.packaging}</p>
-        <div class="card-actions">
-          <a href="product-details.html?id=${product.id}" class="btn btn-outline">View details</a>
-          <a href="contact.html?product=${product.id}" class="btn btn-primary">Request a Quote</a>
-        </div>
-      </div>
-    </article>
-  `;
-}
-
 function renderProducts(items) {
   const grid = document.getElementById('product-grid');
   if (!grid) return;
@@ -31,7 +9,7 @@ function renderProducts(items) {
     return;
   }
 
-  grid.innerHTML = items.map(getProductCard).join('');
+  grid.innerHTML = items.map((product) => renderProductCard(product, { showSpecs: true })).join('');
   grid.querySelectorAll('.reveal').forEach((node) => node.classList.add('visible'));
 }
 

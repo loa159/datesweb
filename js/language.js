@@ -291,6 +291,7 @@ const translations = {
     'Terms & Conditions': 'الشروط والأحكام',
     'Terms': 'الشروط',
     'Contact Us': 'اتصل بنا',
+    'DISCUSS YOUR REQUIREMENTS': 'ناقش متطلباتك',
     "FROM TUNISIA'S FINEST LANDS TO THE WORLD": 'من أجود أراضي تونس إلى العالم',
     'We select, prepare and export quality Tunisian dates, fruits and vegetables for professional and international partners.': 'نختار ونجهز ونصدر التمور والفواكه والخضروات التونسية عالية الجودة للشركاء المحترفين والدوليين.',
     'We select, prepare and export premium Deglet Nour dates in professional formats for international partners.': 'نختار ونجهز ونصدر تمور دقلة نور الممتازة في صيغ احترافية للشركاء الدوليين.',

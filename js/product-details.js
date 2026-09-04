@@ -52,23 +52,7 @@ function renderProductDetails() {
 
   const relatedProducts = getRelatedProducts(product);
   if (related && relatedProducts.length) {
-    related.innerHTML = relatedProducts.map((item) => `
-      <article class="product-card reveal fade-up">
-        <img src="${item.image}" alt="${item.name}" loading="lazy" width="800" height="700" />
-        <div class="product-card-content">
-          <div class="product-meta">
-            <span>${item.category}</span>
-            <span>${item.type}</span>
-          </div>
-          <h3>${item.name}</h3>
-          <p>${item.description}</p>
-          <div class="card-actions">
-            <a href="product-details.html?id=${item.id}" class="btn btn-outline">View details</a>
-            <a href="contact.html?product=${item.id}" class="btn btn-primary">Request a Quote</a>
-          </div>
-        </div>
-      </article>
-    `).join('');
+    related.innerHTML = relatedProducts.map((item) => renderProductCard(item)).join('');
   }
 }
 
