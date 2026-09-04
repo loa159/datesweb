@@ -23,6 +23,7 @@
 
 @media (max-width: 900px) {
   .product-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .catalog-intro { align-items: flex-start; flex-direction: column; gap: 0.75rem; }
   .main-nav, .header-tools > .btn-primary { display: none; }
   .header-tools { gap: 0.5rem; }
   .nav-toggle { display: inline-flex; }
@@ -38,6 +39,7 @@
   .hero-grid { grid-template-columns: 1fr; }
   .hero { padding-top: 5rem; }
   .hero-home { min-height: 620px; }
+  .product-page-hero { min-height: 300px; padding: 5rem 0 2.5rem; }
   .btn-row { flex-direction: column; }
   .btn-row .btn, .card-actions .btn { width: 100%; }
   .features-grid, .category-grid, .values-grid, .date-categories,
@@ -45,6 +47,13 @@
     grid-template-columns: 1fr;
   }
   .footer-grid { grid-template-columns: 1fr; }
+  .catalog-controls { align-items: stretch; flex-direction: column; }
+  .filter-group { flex-wrap: nowrap; max-width: 100%; overflow-x: auto; padding-bottom: 0.35rem; scrollbar-width: thin; }
+  .filter-btn { flex: 0 0 auto; }
+  .catalog-sort { justify-content: space-between; }
+  .quality-steps { grid-template-columns: 1fr; gap: 1rem; }
+  .quality-step { grid-template-columns: 48px 1fr; justify-items: start; text-align: left; align-items: center; }
+  .catalog-cta-inner { align-items: flex-start; flex-direction: column; }
   .footer-bottom-inner { align-items: flex-start; flex-direction: column; gap: 0.75rem; }
   .timeline-item { padding: 1.2rem; }
   .product-carousel { display: block; min-height: 0; padding: 4.5rem 0.75rem 4rem; }
@@ -64,6 +73,10 @@
   .product-card-content { padding: 1.125rem; }
   .product-meta { justify-content: flex-start; }
   .card-actions { flex-direction: column; }
+  .catalog-status { margin-top: -0.4rem; }
+  .pagination { gap: 0.375rem; margin-top: 1.5rem; }
+  .pagination-button { min-width: 40px; height: 40px; padding: 0 0.55rem; }
+  .catalog-cta-inner .btn-row { width: 100%; }
   .timeline { margin-left: 0; }
   .timeline-item { grid-template-columns: 1fr; }
   .timeline::before { inset-inline-start: 20px; }

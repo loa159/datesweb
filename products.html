@@ -49,28 +49,72 @@
       <section class="page-hero small-hero product-page-hero">
         <div class="page-hero-overlay"></div>
         <div class="container page-hero-content reveal fade-up">
-          <p class="section-kicker">CATALOG</p>
-          <h1>Our product catalog</h1>
-          <p>Deglet Nour dates prepared in professional formats for retail, wholesale and international markets.</p>
+          <p class="section-kicker">BEN LARIBI DATTES</p>
+          <h1>Our products</h1>
+          <p>Discover our selection of Tunisian dates, fruits and vegetables prepared for professional markets.</p>
+          <nav class="breadcrumb" aria-label="Breadcrumb"><a href="index.html">Home</a><span>/</span><span>Products</span></nav>
         </div>
       </section>
 
       <section class="section product-catalog">
         <div class="container">
+          <div class="catalog-intro reveal fade-up">
+            <div>
+              <p class="section-kicker">EXPORT SELECTION</p>
+              <h2>A considered selection from Tunisia</h2>
+            </div>
+            <p>Formats prepared with attention to origin, presentation and the practical needs of international buyers.</p>
+          </div>
+
           <div class="catalog-controls reveal fade-up">
             <div class="catalog-search-wrap">
+              <label class="sr-only" for="product-search">Search products</label>
+              <span class="search-icon" aria-hidden="true">⌕</span>
               <input id="product-search" type="search" placeholder="Search products..." aria-label="Search products" />
             </div>
             <div class="filter-group" aria-label="Product filter buttons">
-              <button class="filter-btn active" data-category="all" type="button">All</button>
-              <button class="filter-btn" data-type="branched" type="button">Branched</button>
-              <button class="filter-btn" data-type="conditioned" type="button">Conditioned</button>
-              <button class="filter-btn" data-type="loose" type="button">Loose</button>
+              <button class="filter-btn active" data-type="all" type="button" aria-pressed="true">All</button>
+              <button class="filter-btn" data-category="dates" type="button" aria-pressed="false">Dates</button>
+              <button class="filter-btn" data-type="branched" type="button" aria-pressed="false">Branched</button>
+              <button class="filter-btn" data-type="conditioned" type="button" aria-pressed="false">Conditioned</button>
+              <button class="filter-btn" data-type="loose" type="button" aria-pressed="false">Loose</button>
             </div>
-            <button id="clear-search" class="btn btn-outline" type="button">Clear Search</button>
+            <div class="catalog-sort">
+              <label for="product-sort">Show:</label>
+              <select id="product-sort" aria-label="Sort products">
+                <option value="featured">Featured</option>
+                <option value="az">A-Z</option>
+                <option value="za">Z-A</option>
+              </select>
+            </div>
           </div>
 
+          <div class="catalog-status"><span id="product-count" aria-live="polite"></span><button id="clear-search" class="text-button" type="button">Clear filters</button></div>
           <div id="product-grid" class="product-grid" aria-live="polite"></div>
+          <nav class="pagination" id="pagination" aria-label="Product pagination"></nav>
+        </div>
+      </section>
+
+      <section class="quality-strip section">
+        <div class="container">
+          <div class="section-heading centered-heading reveal fade-up">
+            <p class="section-kicker">OUR METHOD</p>
+            <h2>From selection to export</h2>
+          </div>
+          <div class="quality-steps">
+            <div class="quality-step"><span>01</span><strong>Selection</strong></div>
+            <div class="quality-step"><span>02</span><strong>Quality control</strong></div>
+            <div class="quality-step"><span>03</span><strong>Preparation</strong></div>
+            <div class="quality-step"><span>04</span><strong>Conditioning</strong></div>
+            <div class="quality-step"><span>05</span><strong>Export</strong></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="catalog-cta section">
+        <div class="container catalog-cta-inner reveal fade-up">
+          <div><p class="section-kicker">B2B PARTNERSHIPS</p><h2>Looking for a Tunisian date supplier?</h2><p>Let's discuss your needs in products, packaging and markets.</p></div>
+          <div class="btn-row"><a class="btn btn-primary" href="contact.html?product=branched-bouquet-500g">Request a Quote</a><a class="btn btn-light" href="contact.html">Contact Us</a></div>
         </div>
       </section>
     </main>
