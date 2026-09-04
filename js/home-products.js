@@ -11,31 +11,50 @@ function initHomeProductCarousel() {
   let activeIndex = 0;
   let timer;
 
-  track.innerHTML = products.map((product) => `
-    <article class="carousel-slide">
-      <img class="carousel-slide-image" src="${product.image}" alt="${product.name}" width="900" height="700" loading="eager" />
-      <div class="carousel-slide-content">
-        <div class="carousel-slide-meta">
-          <span>${product.category}</span>
-          <span>${product.type}</span>
-        </div>
-        <h3>${product.name}</h3>
-        <p>${product.description}</p>
-        <div class="carousel-slide-specs">
-          <span><strong>Origin:</strong> ${product.origin}</span>
-          <span><strong>Packaging:</strong> ${product.packaging}</span>
-        </div>
-        <div class="btn-row">
-          <a class="btn btn-primary" href="product-details.html?id=${product.id}">View details</a>
-          <a class="btn btn-outline" href="contact.html?product=${product.id}">Request a Quote</a>
-        </div>
-      </div>
-    </article>
-  `).join('');
+  function text(key) {
+    return typeof translateText === 'function' ? translateText(key) : key;
+  }
 
-  dots.innerHTML = products.map((product, index) => `
-    <button class="carousel-dot${index === 0 ? ' active' : ''}" type="button" data-carousel-dot="${index}" aria-label="Show ${product.name}"></button>
-  `).join('');
+  function updateControlArrows() {
+    const isRtl = document.body.dir === 'rtl';
+    previous.textContent = isRtl ? '→' : '←';
+    next.textContent = isRtl ? '←' : '→';
+  }
+
+  function renderSlides() {
+    track.innerHTML = products.map((product) => `
+      <article class="carousel-slide">
+        <img class="carousel-slide-image" src="${product.image}" alt="${product.name}" width="900" height="700" loading="eager" />
+        <div class="carousel-slide-content">
+          <div class="carousel-slide-meta">
+            <span>${text(product.category)}</span>
+            <span>${text(product.type)}</span>
+          </div>
+          <h3>${text(product.name)}</h3>
+          <p>${text(product.description)}</p>
+          <div class="carousel-slide-specs">
+            <span><strong>${text('Origin:')}</strong> ${text(product.origin)}</span>
+            <span><strong>${text('Packaging:')}</strong> ${text(product.packaging)}</span>
+          </div>
+          <div class="btn-row">
+            <a class="btn btn-primary" href="product-details.html?id=${product.id}">${text('View details')}</a>
+            <a class="btn btn-outline" href="contact.html?product=${product.id}">${text('Request a Quote')}</a>
+          </div>
+        </div>
+      </article>
+    `).join('');
+
+    dots.innerHTML = products.map((product, index) => `
+      <button class="carousel-dot${index === activeIndex ? ' active' : ''}" type="button" data-carousel-dot="${index}" aria-label="${text('Show')} ${text(product.name)}"></button>
+    `).join('');
+
+    dots.querySelectorAll('.carousel-dot').forEach((dot) => {
+      dot.addEventListener('click', () => {
+        render(Number(dot.dataset.carouselDot));
+        restartTimer();
+      });
+    });
+  }
 
   function render(index) {
     activeIndex = (index + products.length) % products.length;
@@ -58,15 +77,15 @@ function initHomeProductCarousel() {
     render(activeIndex + 1);
     restartTimer();
   });
-  dots.querySelectorAll('.carousel-dot').forEach((dot) => {
-    dot.addEventListener('click', () => {
-      render(Number(dot.dataset.carouselDot));
-      restartTimer();
-    });
-  });
-
   carousel.addEventListener('mouseenter', () => window.clearInterval(timer));
   carousel.addEventListener('mouseleave', restartTimer);
+  document.addEventListener('languagechange', () => {
+    updateControlArrows();
+    renderSlides();
+    render(activeIndex);
+  });
+  updateControlArrows();
+  renderSlides();
   render(0);
   restartTimer();
 }

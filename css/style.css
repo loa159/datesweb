@@ -252,7 +252,7 @@ p { margin: 0 0 1rem; color: var(--charcoal); }
   box-shadow: var(--shadow);
 }
 .carousel-viewport { min-width: 0; overflow: hidden; }
-.carousel-track { display: flex; transition: transform 0.5s ease; }
+.carousel-track { display: flex; direction: ltr; transition: transform 0.5s ease; }
 .carousel-slide {
   min-width: 100%;
   display: grid;

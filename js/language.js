@@ -618,6 +618,8 @@ function applyLanguage(lang) {
     const key = node.dataset.i18n;
     if (translations[lang][key]) node.textContent = translations[lang][key];
   });
+
+  document.dispatchEvent(new CustomEvent('languagechange', { detail: { lang } }));
 }
 
 document.addEventListener('DOMContentLoaded', () => {
