@@ -1,5 +1,52 @@
 const isMobile = () => window.innerWidth <= 767;
 
+function formatPhoneDisplay(value, fallback = '+216 95 542 200') {
+  if (!value) return fallback;
+
+  const digits = String(value).replace(/\D/g, '');
+  if (!digits) return fallback;
+
+  if (digits.startsWith('216') && digits.length >= 11) {
+    return `+216 ${digits.slice(3, 5)} ${digits.slice(5, 8)} ${digits.slice(8, 11)}`;
+  }
+
+  if (digits.length === 8) {
+    return `+216 ${digits.slice(0, 2)} ${digits.slice(2, 5)} ${digits.slice(5)}`;
+  }
+
+  return fallback;
+}
+
+function normalizeTelLinks() {
+  document.querySelectorAll('a[href^="tel:"]').forEach((link) => {
+    const hrefValue = link.getAttribute('href') || '';
+    const digits = hrefValue.replace(/^tel:/i, '').replace(/\D/g, '');
+    if (!digits) return;
+
+    const normalized = digits.startsWith('216')
+      ? `tel:+216${digits.slice(3)}`
+      : `tel:+216${digits}`;
+
+    link.setAttribute('href', normalized);
+    link.setAttribute('dir', 'ltr');
+    link.style.direction = 'ltr';
+    link.style.unicodeBidi = 'plaintext';
+
+    const visibleText = link.textContent.trim();
+    const formatted = formatPhoneDisplay(normalized, '+216 95 542 200');
+    if (!visibleText || visibleText !== formatted) {
+      link.textContent = formatted;
+    }
+  });
+
+  const companyPhoneEl = document.getElementById('company-phone');
+  if (companyPhoneEl) {
+    companyPhoneEl.setAttribute('dir', 'ltr');
+    companyPhoneEl.style.direction = 'ltr';
+    companyPhoneEl.style.unicodeBidi = 'plaintext';
+  }
+}
+
 function setHeaderState() {
   const header = document.querySelector('.site-header');
   if (!header) return;
@@ -72,19 +119,20 @@ function initBackToTop() {
 }
 
 function generateWhatsAppLink(productName = '') {
-  const number = window.company && window.company.whatsapp ? window.company.whatsapp.replace(/\D/g, '') : '';
+  const rawPhone = window.company && window.company.whatsapp ? window.company.whatsapp : '+21695542200';
+  const number = rawPhone.replace(/\D/g, '');
   const base = `https://wa.me/${number}`;
   const lang = window.languageState?.current || 'en';
   const messages = {
     en: productName
-      ? `Hello Ben Laribi Dattes, I am interested in ${productName}. Please send me more information.`
-      : 'Hello Ben Laribi Dattes, I would like information about your products.',
+      ? `Hello BEN LARIBI DATTES, I am interested in ${productName}. I would like more information.`
+      : 'Hello BEN LARIBI DATTES, I would like more information about your products.',
     fr: productName
-      ? `Bonjour Ben Laribi Dattes, je suis intéressé par ${productName}. Merci de m’envoyer plus d’informations.`
-      : 'Bonjour Ben Laribi Dattes, je souhaite obtenir des informations sur vos produits.',
+      ? `Bonjour BEN LARIBI DATTES, je suis intéressé par ${productName}. Je souhaiterais recevoir plus d’informations.`
+      : 'Bonjour BEN LARIBI DATTES, je souhaite obtenir des informations concernant vos produits.',
     ar: productName
-      ? `مرحبًا بن العريبي دقلة، أنا مهتم بمنتج ${productName}. يرجى إرسال المزيد من المعلومات.`
-      : 'مرحبًا بن العريبي دقلة، أود الحصول على معلومات حول منتجاتكم.'
+      ? `مرحبًا BEN LARIBI DATTES، أنا مهتم بـ ${productName}. أود تلقي المزيد من المعلومات.`
+      : 'مرحبًا BEN LARIBI DATTES، أود الحصول على معلومات حول منتجاتكم.'
   };
   const message = messages[lang] || messages.en;
   return `${base}?text=${encodeURIComponent(message)}`;
@@ -100,12 +148,19 @@ function initConfigValues() {
   const phoneEl = document.getElementById('company-phone');
   const emailEl = document.getElementById('company-email');
   const addressEl = document.getElementById('company-address');
+  const websiteEl = document.getElementById('company-website');
   const hoursEl = document.getElementById('company-hours');
 
-  if (phoneEl) phoneEl.textContent = window.company && window.company.phone ? window.company.phone : 'YOUR_PHONE_HERE';
-  if (emailEl) emailEl.textContent = window.company && window.company.email ? window.company.email : 'YOUR_EMAIL_HERE';
-  if (addressEl) addressEl.textContent = window.company && window.company.address ? window.company.address : 'YOUR_ADDRESS_HERE';
-  if (hoursEl) hoursEl.textContent = window.company && window.company.businessHours ? window.company.businessHours : 'YOUR_BUSINESS_HOURS';
+  const company = window.company || {};
+  const address = company.address && typeof company.address === 'object'
+    ? [company.address.location, company.address.city, company.address.country].filter(Boolean).join(', ')
+    : (company.address || 'ElKlibya, Jersine, Kébili Sud, Kébili, Tunisie');
+
+  if (phoneEl) phoneEl.textContent = formatPhoneDisplay(company.phone, '+216 95 542 200');
+  if (emailEl) emailEl.textContent = company.email || 'CONTACT@BENLARIBIDATTES.COM';
+  if (addressEl) addressEl.textContent = address;
+  if (websiteEl) websiteEl.textContent = company.website || 'BENLARIBIDATTES.COM';
+  if (hoursEl) hoursEl.textContent = company.businessHours || 'Contact for export and production requirements';
 }
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -116,5 +171,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initBackToTop();
   initWhatsApp();
   initConfigValues();
+  normalizeTelLinks();
   window.addEventListener('scroll', setHeaderState, { passive: true });
 });

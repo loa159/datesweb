@@ -1,18 +1,25 @@
 const company = {
   name: 'Ben Laribi Dattes',
   legalName: 'Sté Ben Laribi & Co',
-  tagline: 'Export de Dattes Deglet Nour',
-  email: 'YOUR_EMAIL_HERE',
-  phone: 'YOUR_PHONE_HERE',
-  whatsapp: 'YOUR_WHATSAPP_NUMBER',
-  address: 'YOUR_ADDRESS_HERE',
-  businessHours: 'YOUR_BUSINESS_HOURS',
-  website: 'https://example.com',
+  tagline: 'Les Meilleures Dattes',
+  taglineEnglish: 'The Best Dates',
+  description:
+    'Production, conditionnement et exportation de dattes, fruits et légumes, particulièrement les dattes Deglet Nour de Tunisie.',
+  phone: '+216 95 542 200',
+  email: 'CONTACT@BENLARIBIDATTES.COM',
+  website: 'BENLARIBIDATTES.COM',
+  whatsapp: '+21695542200',
+  address: {
+    location: 'ElKlibya, Jersine, Kébili Sud',
+    city: 'Kébili',
+    country: 'Tunisie',
+    postalCode: 'VERIFY_POSTAL_CODE'
+  },
+  markets: ['Europe', 'Asie', 'Afrique'],
   social: {
     facebook: '',
     instagram: '',
-    linkedin: '',
-    youtube: ''
+    linkedin: ''
   }
 };
 window.company = company;

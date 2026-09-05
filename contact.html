@@ -14,6 +14,15 @@
     <link rel="stylesheet" href="css/animations.css" />
   </head>
   <body data-page="contact">
+    <div class="top-contact-bar">
+      <div class="container top-contact-strip">
+        <span>📍 ELKLIBYA, JERSINE — KÉBILI SUD, TUNISIE</span>
+        <a href="tel:+21695542200">☎ +216 95 542 200</a>
+        <a href="mailto:CONTACT@BENLARIBIDATTES.COM">✉ CONTACT@BENLARIBIDATTES.COM</a>
+        <a href="https://BENLARIBIDATTES.COM" target="_blank" rel="noopener noreferrer">🌐 BENLARIBIDATTES.COM</a>
+      </div>
+    </div>
+
     <header class="site-header">
       <div class="container nav-wrap">
         <a class="brand" href="index.html" aria-label="Ben Laribi Dattes homepage">
@@ -31,7 +40,7 @@
             <button type="button" data-lang="en">EN</button>
             <button type="button" data-lang="ar">AR</button>
           </div>
-          <a class="btn btn-primary" href="contact.html?product=branched-bouquet-500g">REQUEST A QUOTE</a>
+          <a class="btn btn-primary" href="contact.html">DEMANDER UN DEVIS</a>
           <button class="nav-toggle" type="button" aria-label="Open mobile menu" aria-expanded="false">
             <span></span><span></span><span></span>
           </button>
@@ -50,8 +59,8 @@
         <div class="page-hero-overlay"></div>
         <div class="container page-hero-content reveal fade-up">
           <p class="section-kicker">CONTACT</p>
-          <h1>Let's work together</h1>
-          <p>Contact Ben Laribi Dattes for product information, export inquiries and partnership opportunities.</p>
+          <h1>CONTACTEZ-NOUS</h1>
+          <p>Notre équipe est à votre disposition pour vos demandes concernant nos dattes, fruits, légumes et solutions de conditionnement.</p>
         </div>
       </section>
 
@@ -59,31 +68,31 @@
         <div class="container contact-grid">
           <div class="contact-panel reveal fade-up">
             <div class="contact-info-list">
-              <h2>Contact information</h2>
-              <div><strong>Phone:</strong> <span id="company-phone">YOUR_PHONE_HERE</span></div>
-              <div><strong>Email:</strong> <span id="company-email">YOUR_EMAIL_HERE</span></div>
-              <div><strong>Address:</strong> <span id="company-address">YOUR_ADDRESS_HERE</span></div>
-              <div><strong>Business hours:</strong> <span id="company-hours">YOUR_BUSINESS_HOURS</span></div>
+              <h2>Contact</h2>
+              <div><strong>Phone:</strong> <span id="company-phone">+216 95 542 200</span></div>
+              <div><strong>Email:</strong> <span id="company-email">CONTACT@BENLARIBIDATTES.COM</span></div>
+              <div><strong>Website:</strong> <span id="company-website">BENLARIBIDATTES.COM</span></div>
+              <div><strong>Address:</strong> <span id="company-address">ElKlibya, Jersine, Kébili Sud, Kébili, Tunisie</span></div>
             </div>
-            <div class="map-box" id="map-box">MAP LOCATION</div>
+            <div class="map-box" id="map-box">Notre bureau et notre usine sont situés à Kébili, au cœur de l'Oasis.</div>
           </div>
 
           <div class="form-panel reveal fade-up">
             <form id="contact-form" novalidate>
               <div class="form-row two-columns">
                 <div class="field-group">
-                  <label for="first-name">First Name *</label>
+                  <label for="first-name">Prénom *</label>
                   <input id="first-name" name="firstName" type="text" required />
                 </div>
                 <div class="field-group">
-                  <label for="last-name">Last Name *</label>
+                  <label for="last-name">Nom *</label>
                   <input id="last-name" name="lastName" type="text" required />
                 </div>
               </div>
 
               <div class="form-row two-columns">
                 <div class="field-group">
-                  <label for="company">Company</label>
+                  <label for="company">Entreprise</label>
                   <input id="company" name="company" type="text" />
                 </div>
                 <div class="field-group">
@@ -94,28 +103,30 @@
 
               <div class="form-row two-columns">
                 <div class="field-group">
-                  <label for="phone">Phone</label>
+                  <label for="phone">Téléphone</label>
                   <input id="phone" name="phone" type="tel" />
                 </div>
                 <div class="field-group">
-                  <label for="country">Country</label>
+                  <label for="country">Pays</label>
                   <input id="country" name="country" type="text" />
                 </div>
               </div>
 
               <div class="form-row two-columns">
                 <div class="field-group">
-                  <label for="product">Product</label>
-                  <input id="product" name="product" type="text" />
+                  <label for="product">Produit</label>
+                  <select id="product" name="product">
+                    <option value="">Sélectionnez un produit</option>
+                  </select>
                 </div>
                 <div class="field-group">
-                  <label for="quantity">Quantity</label>
+                  <label for="quantity">Quantité</label>
                   <input id="quantity" name="quantity" type="text" />
                 </div>
               </div>
 
               <div class="field-group">
-                <label for="packaging">Packaging</label>
+                <label for="packaging">Type de conditionnement</label>
                 <input id="packaging" name="packaging" type="text" />
               </div>
 
@@ -125,7 +136,7 @@
               </div>
 
               <div class="form-status" id="form-status" aria-live="polite"></div>
-              <button class="btn btn-primary submit-btn" type="submit">SEND INQUIRY</button>
+              <button class="btn btn-primary submit-btn" type="submit">ENVOYER LA DEMANDE</button>
             </form>
           </div>
         </div>
@@ -156,9 +167,9 @@
         <div>
           <h3>Contact</h3>
           <ul>
-            <li><a href="mailto:YOUR_EMAIL_HERE">YOUR_EMAIL_HERE</a></li>
-            <li><a href="tel:YOUR_PHONE_HERE">YOUR_PHONE_HERE</a></li>
-            <li><span>YOUR_ADDRESS_HERE</span></li>
+            <li><a href="tel:+21695542200">+216 95 542 200</a></li>
+            <li><a href="mailto:CONTACT@BENLARIBIDATTES.COM">CONTACT@BENLARIBIDATTES.COM</a></li>
+            <li><span>ElKlibya, Jersine, Kébili Sud, Kébili, Tunisie</span></li>
           </ul>
         </div>
       </div>

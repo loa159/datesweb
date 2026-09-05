@@ -56,6 +56,43 @@ p { margin: 0 0 1rem; color: var(--charcoal); }
   margin-bottom: 1rem;
 }
 
+.top-contact-bar {
+  background: var(--green-dark);
+  color: var(--white);
+  border-bottom: 1px solid rgba(233, 174, 24, 0.18);
+}
+.top-contact-strip {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.65rem 1.1rem;
+  padding: 0.7rem 1rem;
+  font-size: 0.78rem;
+  letter-spacing: 0.03em;
+  font-weight: 600;
+}
+.top-contact-strip a,
+.top-contact-strip span {
+  color: var(--white);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  line-height: 1.4;
+}
+body[dir="rtl"] a[href^="tel:"],
+body.rtl a[href^="tel:"],
+body[dir="rtl"] #company-phone,
+body.rtl #company-phone,
+body[dir="rtl"] .top-contact-strip a,
+body.rtl .top-contact-strip a,
+body[dir="rtl"] .top-contact-strip span,
+body.rtl .top-contact-strip span {
+  direction: ltr !important;
+  unicode-bidi: plaintext !important;
+  display: inline-block !important;
+  letter-spacing: 0 !important;
+}
 .site-header {
   position: sticky;
   top: 0;
